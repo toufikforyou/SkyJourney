@@ -3,66 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SkyJourney - About Us</title>
+    <title>SkyJourney - Sign In</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <header>
+    <!-- Include Header -->
+    <jsp:include page="/includes/header.jsp" />
+
+    <!-- Sign In Section -->
+    <section class="auth-section">
       <div class="container">
-        <div class="header-content">
-          <div class="logo">Sky<span>Journey</span></div>
-          <nav>
-            <ul>
-              <li><a href="./index.jsp">Flights</a></li>
-              <li><a href="./about.jsp">About</a></li>
-              <li><a href="./contact.jsp">Contact</a></li>
-              <li><a href="./signin.jsp">Sign In</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header>
-
-    <!-- About Section -->
-    <section class="about-section">
-      <div class="container">
-        <div class="section-title">
-          <h1>About SkyJourney</h1>
-          <p>Your Trusted Travel Partner</p>
-        </div>
-
-        <div class="about-content">
-          <div class="about-card">
-            <h2>Our Story</h2>
-            <p>
-              Founded in 2020, SkyJourney has grown to become one of the leading
-              flight booking platforms, serving millions of travelers worldwide.
+        <div class="auth-box">
+          <h2>Sign In</h2>
+          <form class="auth-form">
+            <div class="form-field">
+              <label for="email">Mobile</label>
+              <input type="text" id="email" required />
+            </div>
+            <div class="form-field">
+              <label for="password">Password</label>
+              <input type="password" id="password" required />
+            </div>
+            <button type="submit" class="primary-button">Sign In</button>
+            <p class="auth-links">
+              <a href="#">Forgot Password?</a>
+              <span>Don't have an account? <a href="#">Sign Up</a></span>
             </p>
-          </div>
-
-          <div class="about-card">
-            <h2>Our Mission</h2>
-            <p>
-              To make air travel accessible, comfortable, and enjoyable for
-              everyone by providing the best flight deals and exceptional
-              service.
-            </p>
-          </div>
-
-          <div class="about-stats">
-            <div class="stat-item">
-              <h3>1M+</h3>
-              <p>Happy Customers</p>
-            </div>
-            <div class="stat-item">
-              <h3>100+</h3>
-              <p>Countries Served</p>
-            </div>
-            <div class="stat-item">
-              <h3>500+</h3>
-              <p>Airlines Partners</p>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </section>
