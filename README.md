@@ -72,7 +72,7 @@ http://localhost:8000
 
 The server will automatically try ports 8000-8009 if the default port (8000) is occupied.
 
-## Or Running method 2
+### Or Running method 2
 
 1. First, make sure you're in the project directory:
 ```bash
