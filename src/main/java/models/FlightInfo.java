@@ -4,6 +4,7 @@ public class FlightInfo {
     public String flight_name = "N/A";
     public int flight_number = 0;
     public int ticket_price = 0;
+    // Need a time for departure and arrival
     public String starting_destination = "N/A";
     public String ending_destination = "N/A";
 
