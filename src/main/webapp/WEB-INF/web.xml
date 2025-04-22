@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
-         version="6.0">
-    <display-name>Airline Web Application</display-name>
-    
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    version="2.5">
+
+    <display-name>SkyJourney Web Application</display-name>
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
+    <servlet>
+        <servlet-name>ContactController</servlet-name>
+        <servlet-class>com.skyjourney.controllers.ContactController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ContactController</servlet-name>
+        <url-pattern>/contact</url-pattern>
+    </servlet-mapping>
+
 </web-app>
