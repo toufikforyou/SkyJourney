@@ -47,24 +47,28 @@ AirlineProject/
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone [repository-url]
 cd AirlineProject
 ```
 
 2. Build the project using Maven:
+
 ```bash
-mkdir -p jetty && wget -O jetty/jetty-runner.jar https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-runner/9.4.53.v20231009/jetty-runner-9.4.53.v20231009.jar
+mvn clean install
 ```
 
 ### Running the Application
 
 1. Start the server using Java:
+
 ```bash
-cd /AirlineProject && java -jar jetty/jetty-runner.jar --port 8080 src/main/webapp/
+cd /AirlineProject && mvn jetty:run
 ```
 
 2. Access the application in your web browser:
+
 ```
 http://localhost:8000
 ```
@@ -121,5 +125,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Create admin dashboard
 - Add database integration
 - Implement flight search functionality
-
-
