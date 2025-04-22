@@ -25,7 +25,6 @@ AirlineProject/
 │       │   ├── models/
 │       │   ├── routes/
 │       │   ├── services/
-│       │   └── Server.java
 │       └── webapp/
 │           ├── css/
 │           │   └── style.css
@@ -55,14 +54,14 @@ cd AirlineProject
 
 2. Build the project using Maven:
 ```bash
-mvn clean install
+mkdir -p jetty && wget -O jetty/jetty-runner.jar https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-runner/9.4.53.v20231009/jetty-runner-9.4.53.v20231009.jar
 ```
 
 ### Running the Application
 
 1. Start the server using Java:
 ```bash
-java -cp target/classes Server
+cd /AirlineProject && java -jar jetty/jetty-runner.jar --port 8080 src/main/webapp/
 ```
 
 2. Access the application in your web browser:
@@ -71,23 +70,6 @@ http://localhost:8000
 ```
 
 The server will automatically try ports 8000-8009 if the default port (8000) is occupied.
-
-### Or Running method 2
-
-1. First, make sure you're in the project directory:
-```bash
-    cd "e:\Airline Project\airline"
-```
-
-2. Compile the code (assuming you have Java installed):
-```bash
-    javac -d target/classes src/main/java/Server.java
-```
-
-3. Run the server:
-```bash
-    java -cp target/classes Server
-```
 
 ## Features
 

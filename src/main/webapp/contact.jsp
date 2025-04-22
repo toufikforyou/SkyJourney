@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,7 +26,6 @@
       </div>
     </header>
 
-    <!-- Contact Section -->
     <section class="contact-section">
       <div class="container">
         <div class="section-title">
@@ -35,7 +37,7 @@
           <div class="contact-form-container">
             <form
               class="contact-form"
-              action="${pageContext.request.contextPath}/contact"
+              action="/contact"
               method="POST"
             >
               <div class="form-field">
