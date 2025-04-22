@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,7 +25,6 @@
       </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
       <div class="container">
         <h1>Explore the World with SkyJourney</h1>
@@ -78,7 +79,6 @@
 
           <button class="search-btn">Search Flights</button>
 
-          <!-- Update flight listings section -->
           <div class="flight-listings">
             <h2>Available Flights</h2>
             <div id="flight-listings-content"></div>
@@ -87,7 +87,6 @@
       </div>
     </section>
 
-    <!-- Popular Destinations Section -->
     <section class="popular-destinations">
       <div class="container">
         <div class="section-title">
