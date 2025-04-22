@@ -78,11 +78,11 @@ nav ul li a:hover {
 
 .hero {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/api/placeholder/1200/600");
+    url("../images/airline-bg.jpg");
   background-size: cover;
   background-position: center;
   color: white;
-  padding: 80px 0;
+  padding: 100px 0;
   text-align: center;
 }
 
