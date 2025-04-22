@@ -1,14 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SkyJourney - Contact Us</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
+
   <body>
     <header>
       <div class="container">
@@ -35,26 +36,22 @@
 
         <div class="contact-content">
           <div class="contact-form-container">
-            <form
-              class="contact-form"
-              action="/contact"
-              method="POST"
-            >
+            <form class="contact-form" action="/contact" method="POST">
               <div class="form-field">
                 <label for="name">Full Name</label>
-                <input type="text" id="name" required />
+                <input type="text" id="name" name="name" required />
               </div>
               <div class="form-field">
                 <label for="email">Email/Mobile</label>
-                <input type="text" id="email" required />
+                <input type="text" id="email" name="email" required />
               </div>
               <div class="form-field">
                 <label for="subject">Subject</label>
-                <input type="text" id="subject" required />
+                <input type="text" id="subject" name="subject" required />
               </div>
               <div class="form-field">
                 <label for="message">Message</label>
-                <textarea id="message" rows="5" required></textarea>
+                <textarea id="message" name="message" rows="5" required></textarea>
               </div>
               <button type="submit" class="primary-button">Send Message</button>
             </form>
@@ -122,4 +119,5 @@
       </div>
     </footer>
   </body>
-</html>
+
+  </html>
