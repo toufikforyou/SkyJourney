@@ -1,9 +1,11 @@
 package com.skyjourney.controllers;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
 
+@WebServlet("/contact")
 public class ContactController extends HttpServlet {
 
     @Override
