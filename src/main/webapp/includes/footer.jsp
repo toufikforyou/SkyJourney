@@ -15,7 +15,7 @@
                 <h3>Help</h3>
                 <ul>
                     <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="/contact.jsp">Contact Us</a></li>
                     <li><a href="#">Booking Guide</a></li>
                     <li><a href="#">Travel Insurance</a></li>
                 </ul>

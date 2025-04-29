@@ -506,6 +506,58 @@ footer {
   box-shadow: var(--shadow);
 }
 
+.contact-info .info-card > p {
+  padding-top: 10px;
+}
+
+.alert {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  padding: 14px 22px;
+  border-radius: 6px;
+  font-weight: bold;
+  z-index: 9999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  opacity: 0.95;
+  animation: fadein 0.4s, fadeout 0.4s 3.6s;
+  max-width: 300px;
+}
+
+.alert.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
 .primary-button {
   background-color: var(--primary);
   color: var(--bg-white);
