@@ -55,6 +55,19 @@
         </div>
       </section>
 
+      <script>
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("success") === "1") {
+          const div = document.createElement("div");
+          div.className = "alert success";
+          div.innerText = "✅ Thank you! Your message was sent successfully.";
+          document.body.appendChild(div);
+
+          setTimeout(() => div.remove(), 4000);
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+      </script>
+
       <%@ include file="./includes/footer.jsp" %>
   </body>
 

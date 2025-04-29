@@ -19,10 +19,6 @@ public class ContactController extends HttpServlet {
         String subject = req.getParameter("subject");
         String message = req.getParameter("message");
 
-        resp.getWriter().println("<h2>Contact Message Received</h2>");
-        resp.getWriter().println("<p><strong>Name:</strong> " + name + "</p>");
-        resp.getWriter().println("<p><strong>Email:</strong> " + email + "</p>");
-        resp.getWriter().println("<p><strong>Subject:</strong> " + subject + "</p>");
-        resp.getWriter().println("<p><strong>Message:</strong> " + message + "</p>");
+        resp.sendRedirect("contact.jsp?success=1");
     }
 }
