@@ -46,9 +46,11 @@
             <div class="contact-info">
               <div class="info-card">
                 <h3>Contact Information</h3>
-                <p>📍 123 Airport Road, City, Country</p>
-                <p>📞 +1 234 567 890</p>
+                <p>📍 412 Uganda, Dhaka, Bangladesh.</p>
+                <p>📞 +880 123 456 7890</p>
                 <p>✉️ support@skyjourney.com</p>
+                <p>🌐 www.skyjourney.com</p>
+                <p>📅 Open: Always Open</p>
               </div>
             </div>
           </div>
