@@ -1,4 +1,4 @@
-package com.skyjourney.controllers;
+package com.skyjourney.routes;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.skyjourney.services.SendEmailService;
 
 @WebServlet("/contact")
-public class ContactController extends HttpServlet {
+public class ContactRoute extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,6 +26,18 @@ public class ContactController extends HttpServlet {
 
         SendEmailService sendEmailService = new SendEmailService();
         sendEmailService.sendEmail(name, subject, email, message);
+
+        /**
+         * TODO: Implement Contact Message functionality
+         * Step 1: @Author MH TOUFIK already created a email service class for this
+         * feature. Follow the class and implement the feature in here.
+         * Step 2: Create a controller class that interacts with the model class to
+         * handle login logic.
+         * Step 3: Instantiate the controller class here and use it to validate the user
+         * credentials.
+         * Step 4: If login success then passing query success=1 otherwase error=1
+         * Step 5: Must be implement this part @Author Tithi Bala
+         */
 
         resp.sendRedirect("contact.jsp?success=1");
     }
