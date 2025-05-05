@@ -24,11 +24,12 @@ public class LogInRoute extends HttpServlet {
          * handle login logic.
          * Step 3: Instantiate the controller class here and use it to validate the user
          * credentials.
-         * Step 4: If login success then passing query success=1 otherwase error=1
+         * Step 4: If login success then passing query success=1 with name, email
+         * and login token otherwase error=1
          * Step 5: Must be implement this part @Author Nasfim
          */
 
-        resp.sendRedirect("signin.jsp?success=1");
+        resp.sendRedirect("signin.jsp?success=1&name=MH TOUFIK&email=email@example.com&token=asdfhasjdfhsagd");
     }
 
 }

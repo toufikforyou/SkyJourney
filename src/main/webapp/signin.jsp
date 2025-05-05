@@ -36,19 +36,25 @@ pageEncoding="UTF-8" %>
     </section>
     <script>
       const params = new URLSearchParams(window.location.search);
-      if (params.get("success") === "1") {
-        const div = document.createElement("div");
-        div.className = "alert success";
-        div.innerText = "✅ Login Successfully done.";
-        document.body.appendChild(div);
 
-        setTimeout(() => div.remove(), 4000);
+      if (params.get("success") === "1") {
+        if (!localStorage.getItem("token")) {
+          localStorage.setItem("token", params.get("token"));
+          localStorage.setItem("name", params.get("name"));
+          localStorage.setItem("email", params.get("email"));
+        }
+
         window.history.replaceState(
           {},
           document.title,
           window.location.pathname
         );
+
+        window.location.href = "/";
       } else if (params.get("error") === 1) {
+        if (localStorage.getItem("token")) {
+          localStorage.clear();
+        }
         const div = document.createElement("div");
         div.className = "alert error";
         div.innerText = "-_- Login error";
