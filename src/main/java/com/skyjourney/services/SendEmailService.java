@@ -7,26 +7,22 @@ import com.mailersend.sdk.emails.Email;
 import com.mailersend.sdk.exceptions.MailerSendException;
 
 public class SendEmailService {
-    String name, subject, to, smg;
 
-    public SendEmailService(String name, String subject, String to, String smg) {
-        this.name = name;
-        this.subject = subject;
-        this.to = to;
-        this.smg = smg;
-    }
-
-    public void sendEmail() {
+    public void sendEmail(String name, String subject, String to, String smg) {
+        Long caseid = System.currentTimeMillis();
 
         Email email = new Email();
 
-        email.setFrom("Sky Jaurney", "hello@test-vz9dlemmjd64kj50.mlsender.net");
+        email.setFrom("Sky Jaurney", caseid + "hello@test-2p0347zz3eylzdrn.mlsender.net");
         email.AddReplyTo("MH TOUFIK", "hello@toufikforyou.dev");
 
-        Recipient recipient = new Recipient(this.name, this.to);
-        email.AddRecipient(recipient);
+        Recipient recipient = new Recipient(name, to);
+        Recipient recipient2 = new Recipient("Support Team", caseid + "@toufikforyou.dev");
 
-        email.setSubject("Thank you! Your message was sent successfully. Your case id: " + System.currentTimeMillis());
+        email.AddRecipient(recipient2);
+        email.AddCc(recipient);
+
+        email.setSubject("Case " + caseid + " Thank you! We are recived your touch.");
 
         String smString = "<p>Subject: " + subject + "<br><br/>Case smg: " + smg
                 + "<br><br>We will as soon as posible to reply your email.<br><br><br>Best Regards,<br>Support team, Sky Journey<br></p>";
@@ -35,13 +31,14 @@ public class SendEmailService {
 
         MailerSend ms = new MailerSend();
 
-        ms.setToken("mlsn.b62a4530b0f46a27bbb96390c4f9ef89baece68795375d0a2661006ce87f594b");
+        ms.setToken("mlsn.cdc233cf07e106ccebc4b357a7111e72dccae651a9feaef0c581f8fd7064ec3c");
 
         try {
             MailerSendResponse response = ms.emails().send(email);
             System.out.println(response.messageId);
         } catch (MailerSendException e) {
             e.printStackTrace();
+            System.out.println(e.message);
         }
     }
 

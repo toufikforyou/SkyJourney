@@ -1,12 +1,14 @@
 package com.skyjourney.controllers;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.skyjourney.services.SendEmailService;
-
-import java.io.IOException;
 
 @WebServlet("/contact")
 public class ContactController extends HttpServlet {
@@ -22,8 +24,8 @@ public class ContactController extends HttpServlet {
         String subject = req.getParameter("subject");
         String message = req.getParameter("message");
 
-        SendEmailService sendEmailService = new SendEmailService(name, subject, email, message);
-        sendEmailService.sendEmail();
+        SendEmailService sendEmailService = new SendEmailService();
+        sendEmailService.sendEmail(name, subject, email, message);
 
         resp.sendRedirect("contact.jsp?success=1");
     }
