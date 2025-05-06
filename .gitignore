@@ -11,3 +11,4 @@
 /.mvnw.cmd
 /.DS_Store
 /.vscode
+.env
