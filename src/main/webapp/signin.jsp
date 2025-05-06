@@ -19,16 +19,30 @@ pageEncoding="UTF-8" %>
           <form class="auth-form" method="post" action="/login">
             <div class="form-field">
               <label for="email">Mobile/Email</label>
-              <input name="email" type="text" id="email" required />
+              <input
+                placeholder="Enter your email"
+                name="email"
+                type="text"
+                id="email"
+                required
+              />
             </div>
             <div class="form-field">
               <label for="password">Password</label>
-              <input name="password" type="password" id="password" required />
+              <input
+                placeholder="Enter your password"
+                name="password"
+                type="password"
+                id="password"
+                required
+              />
             </div>
             <button type="submit" class="primary-button">Sign In</button>
             <p class="auth-links">
               <a href="#">Forgot Password?</a>
-              <span>Don't have an account? <a href="#">Sign Up</a></span>
+              <span
+                >Don't have an account? <a href="/singup.jsp">Sign Up</a></span
+              >
             </p>
           </form>
         </div>
