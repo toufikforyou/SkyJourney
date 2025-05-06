@@ -15,33 +15,42 @@ pageEncoding="UTF-8" %>
     <section class="auth-section">
       <div class="container">
         <div class="auth-box">
-          <h2>Sign In</h2>
+          <h2>Register User</h2>
           <form class="auth-form" method="post" action="/login">
+            <div class="form-field">
+              <label for="name">Your name</label>
+              <input
+                name="name"
+                type="text"
+                id="name"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
             <div class="form-field">
               <label for="email">Mobile/Email</label>
               <input
-                placeholder="Enter your email"
                 name="email"
                 type="text"
                 id="email"
+                placeholder="Enter your email or mobile number"
                 required
               />
             </div>
             <div class="form-field">
               <label for="password">Password</label>
               <input
-                placeholder="Enter your password"
                 name="password"
+                placeholder="Create a new password"
                 type="password"
                 id="password"
                 required
               />
             </div>
-            <button type="submit" class="primary-button">Sign In</button>
+            <button type="submit" class="primary-button">Register</button>
             <p class="auth-links">
-              <a href="#">Forgot Password?</a>
               <span
-                >Don't have an account? <a href="/singup.jsp">Sign Up</a></span
+                >Do you have an account? <a href="/signin.jsp">Login</a></span
               >
             </p>
           </form>
