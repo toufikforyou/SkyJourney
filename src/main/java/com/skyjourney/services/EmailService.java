@@ -27,6 +27,7 @@ public class EmailService {
         properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
 
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
@@ -37,7 +38,7 @@ public class EmailService {
 
         try {
             MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(senderEmail));
+            message.setFrom(new InternetAddress(senderEmail, "Sky Journey"));
 
             message.addRecipient(Message.RecipientType.TO,
                     new InternetAddress(to, name));
@@ -47,9 +48,10 @@ public class EmailService {
             message.setReplyTo(
                     new InternetAddress[] { new InternetAddress("team@toufikforyou.dev", "Sky Journey Team") });
 
-            String emailSubject = caseId > 0 ? subject + " (Case #" + caseId + ")" : subject;
+            String emailSubject = caseId > 0 ? "(Case #" + caseId + ") " + subject : subject;
             message.setSubject(emailSubject);
-            message.setText(msg);
+            message.setContent(msg, "text/html; charset=utf-8");
+            message.setContent(msg, "text/html; charset=utf-8");
 
             Transport.send(message);
             System.out.println("Email sent successfully to: " + to);
