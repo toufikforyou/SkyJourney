@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.skyjourney.services.SendEmailService;
+import com.skyjourney.controllers.ContactController;
 
 @WebServlet("/contact")
 public class ContactRoute extends HttpServlet {
@@ -24,11 +24,8 @@ public class ContactRoute extends HttpServlet {
         String subject = req.getParameter("subject");
         String message = req.getParameter("message");
 
-        SendEmailService sendEmailService = new SendEmailService();
-        sendEmailService.sendEmail(name, subject, email, message);
-
         /**
-         * TODO: Implement Contact Message functionality
+         * Complete by Tithi Bala: Implement Contact Message functionality
          * Step 1: @Author MH TOUFIK already created a email service class for this
          * feature. Follow the class and implement the feature in here.
          * Step 2: Create a controller class that interacts with the model class to
@@ -39,6 +36,12 @@ public class ContactRoute extends HttpServlet {
          * Step 5: Must be implement this part @Author Tithi Bala
          */
 
-        resp.sendRedirect("contact.jsp?success=1");
+        ContactController contactController = new ContactController();
+
+        if (contactController.sendContactEmail(name, email, subject, message)) {
+            resp.sendRedirect("contact.jsp?success=1");
+        } else {
+            resp.sendRedirect("contact.jsp?error=1");
+        }
     }
 }
