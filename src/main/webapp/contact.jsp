@@ -25,11 +25,23 @@ pageEncoding="UTF-8" %>
             <form class="contact-form" action="/contact" method="POST">
               <div class="form-field">
                 <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required />
+                <input
+                  type="text"
+                  placeholder="Enter your full name"
+                  id="name"
+                  name="name"
+                  required
+                />
               </div>
               <div class="form-field">
                 <label for="email">Email/Mobile</label>
-                <input type="text" id="email" name="email" required />
+                <input
+                  type="text"
+                  placeholder="Enter your email or mobile number"
+                  id="email"
+                  name="email"
+                  required
+                />
               </div>
               <div class="form-field">
                 <label for="subject">Subject</label>
@@ -38,6 +50,7 @@ pageEncoding="UTF-8" %>
               <div class="form-field">
                 <label for="message">Message</label>
                 <textarea
+                  placeholder="Your message..."
                   id="message"
                   name="message"
                   rows="5"
