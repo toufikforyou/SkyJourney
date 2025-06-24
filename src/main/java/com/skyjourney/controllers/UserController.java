@@ -21,4 +21,12 @@ public class UserController{
     {
         users.add(user);
     }
+
+    static boolean doesExist(String emailOrPhone) {
+        for (User user : users) {
+            if (user.emailOrPhone == emailOrPhone)
+                return true;
+        }
+        return false;
+    }
 }
