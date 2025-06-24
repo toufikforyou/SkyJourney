@@ -9,19 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.skyjourney.controllers.UserController;
+import com.skyjourney.models.User;
 
-@WebServlet("/login")
-public class LogInRoute extends HttpServlet {
+@WebServlet("/register")
+public class RegisterRoute extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
         String emailOrPhone = req.getParameter("email");
         String password = req.getParameter("password");
 
-        // System.out.println(emailOrPhone);
-        // System.out.println(password);
+        System.out.println(name);
+        System.out.println(emailOrPhone);
+        System.out.println(password);
         /**
-         * TODO: Implement login functionality
+         * TODO: Implement register functionality
          * Step 1: Create a model class to represent user credentials and validation
          * logic.
          * Step 2: Create a controller class that interacts with the model class to
@@ -33,15 +36,9 @@ public class LogInRoute extends HttpServlet {
          * Step 5: Must be implement this part @Author Nasfim
          */
 
-        UserController user = new UserController();
-        
-        if(user.login(emailOrPhone, password)){
-            resp.sendRedirect("signin.jsp?success=1&name=MH TOUFIK&email=email@example.com&token=asdfhasjdfhsagd");
+            UserController user = new UserController();
+            user.resgister(new User(name, emailOrPhone, password));
+            resp.sendRedirect("/?success=1&name=" + name + "&email=" + emailOrPhone);
         }
-        else{
-            resp.sendRedirect("signin.jsp?error=1");
-        }
-
-    }
 
 }
