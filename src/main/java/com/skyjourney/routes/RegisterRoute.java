@@ -45,5 +45,4 @@ public class RegisterRoute extends HttpServlet {
             resp.sendRedirect("/?error=1");
         }
     }
-
 }
