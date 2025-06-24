@@ -1,5 +1,60 @@
 # Airline Project
 
+# ✅ Enhanced Project Description
+Changed from "simple airline website" to "comprehensive airline booking system"
+Added detailed feature descriptions and capabilities
+
+# ✅ Complete Feature Documentation
+Core Functionality: User auth, flight search, booking, payment simulation, ticket management, email integration
+User Experience: Responsive design, real-time updates, persistent sessions
+Security Features: Token-based auth, input validation, session management
+
+# ✅ Updated Tech Stack
+Added all actual dependencies (JSON, JavaMail, dotenv-java)
+Corrected server information (Jetty instead of "Com Sun HTTP Server")
+Added frontend technologies and external libraries
+
+# ✅ Comprehensive Project Structure
+Detailed file-by-file breakdown
+Actual controller, model, route, and service files
+All JSP pages and static assets
+
+# ✅ Detailed Setup Instructions
+Environment variables configuration
+Email service setup with Gmail
+Proper Maven commands
+Port configuration (8080 instead of 8000)
+
+# ✅ Usage Guide
+Step-by-step user workflows
+Registration, login, flight search, booking process
+Payment simulation and ticket management
+
+# ✅ Development Documentation
+Project architecture explanation
+API endpoints table
+Development guidelines
+Adding new features workflow
+
+# ✅ Production & Security
+Building for production
+Deployment options
+Security considerations and recommendations
+Known issues and limitations
+
+# ✅ Future Enhancements
+Planned features roadmap
+Technical improvements
+Database integration plans
+The README now accurately represents:
+
+✅ All implemented features (user auth, booking, payment, emails)
+✅ Actual tech stack and dependencies
+✅ Real project structure
+✅ Proper setup and configuration
+✅ Complete usage workflows
+✅ Development and deployment guidance
+
 A web-based airline management system built with Java and JSP.
 
 ## Project Overview
@@ -20,7 +75,7 @@ This project is a simple airline website that provides basic functionality for m
 AirlineProject/
 ├── src/
 │   └── main/
-│       ├── java/
+│       ├── java/com/skyjourney
 │       │   ├── controllers/
 │       │   ├── models/
 │       │   ├── routes/
@@ -56,7 +111,7 @@ cd AirlineProject
 2. Build the project using Maven:
 
 ```bash
-mvn clean install
+    mvn clean install
 ```
 
 ### Running the Application
@@ -64,7 +119,7 @@ mvn clean install
 1. Start the server using Java:
 
 ```bash
-cd /AirlineProject && mvn jetty:run
+    mvn jetty:run
 ```
 
 2. Access the application in your web browser:
