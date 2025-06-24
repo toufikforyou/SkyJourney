@@ -24,7 +24,7 @@ public class UserController{
 
     static boolean doesExist(String emailOrPhone) {
         for (User user : users) {
-            if (user.emailOrPhone == emailOrPhone)
+            if (user.email == emailOrPhone)
                 return true;
         }
         return false;
