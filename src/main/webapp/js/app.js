@@ -1,80 +1,114 @@
 // Wait for DOM to fully load
 document.addEventListener("DOMContentLoaded", function () {
-  // Validate form to prevent selecting same airport for origin and destination
   const fromAirport = document.getElementById("from-airport");
   const toAirport = document.getElementById("to-airport");
   const searchBtn = document.querySelector(".search-btn");
 
-  // Event listeners for airport selection
+  // Load airports on page load
+  loadAirports();
+
+  // Event listeners
   fromAirport.addEventListener("change", validateAirports);
   toAirport.addEventListener("change", validateAirports);
+  searchBtn.addEventListener("click", handleSearch);
 
-  // Form submission handling
-  searchBtn.addEventListener("click", function (e) {
+  // Load airports from API with fallback
+  function loadAirports() {
+    fetch('./api/flights?action=airports')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(airports => {
+        console.log('Loaded airports from API:', airports);
+        if (airports && airports.length > 0) {
+          populateAirportDropdowns(airports);
+        } else {
+          console.log('No airports from API, using fallback');
+          populateAirportDropdowns([]);
+        }
+      })
+      .catch(error => {
+        console.log('Error loading airports from API, using fallback:', error);
+        populateAirportDropdowns([]);
+      });
+  }
+
+  // Populate airport dropdowns
+  function populateAirportDropdowns(airports) {
+    fromAirport.innerHTML = '<option value="">Select Airport</option>';
+    toAirport.innerHTML = '<option value="">Select Airport</option>';
+    
+    airports.forEach(airport => {
+      const option1 = new Option(`${airport.name} (${airport.code})`, airport.code);
+      const option2 = new Option(`${airport.name} (${airport.code})`, airport.code);
+      fromAirport.add(option1);
+      toAirport.add(option2);
+    });
+  }
+
+  // Handle search form submission
+  function handleSearch(e) {
     e.preventDefault();
+    if (validateForm()) {
+      searchFlights();
+    }
+  }
 
-    // Validate form before submission
-    if (!validateForm()) {
-      return false;
+  // Search for flights
+  function searchFlights() {
+    const params = new URLSearchParams({
+      action: 'search',
+      from: fromAirport.value,
+      to: toAirport.value,
+      date: document.querySelector('input[type="date"]').value
+    });
+
+    console.log('Searching flights with params:', params.toString());
+    showLoading();
+    
+    fetch(`./api/flights?${params}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(flights => {
+        console.log('Found flights:', flights);
+        displayFlights(flights);
+      })
+      .catch(error => {
+        console.error('Error searching flights:', error);
+        showError();
+      });
+  }
+
+  // Display flight results
+  function displayFlights(flights) {
+    const content = document.getElementById("flight-listings-content");
+    
+    if (flights.length === 0) {
+      content.innerHTML = '<div class="no-flights">No flights found for your search criteria.</div>';
+      return;
     }
 
-    // Collect form data
-    const departureDate = document.querySelector('input[type="date"]').value;
-    const travelers = document.getElementById("class-select").value;
-
-    // Show flight listings
-    const flightListings = document.querySelector(".flight-listings");
-    flightListings.classList.add("show");
-
-    // In a real app, this would be populated from server data
-    const mockFlights = [
-      {
-        flightNumber: "SK123",
-        departure: fromAirport.options[fromAirport.selectedIndex].text,
-        arrival: toAirport.options[toAirport.selectedIndex].text,
-        departureTime: "09:00",
-        arrivalTime: "11:30",
-        price: 299,
-      },
-      {
-        flightNumber: "SK456",
-        departure: fromAirport.options[fromAirport.selectedIndex].text,
-        arrival: toAirport.options[toAirport.selectedIndex].text,
-        departureTime: "13:00",
-        arrivalTime: "15:30",
-        price: 349,
-      },
-      {
-        flightNumber: "SK789",
-        departure: fromAirport.options[fromAirport.selectedIndex].text,
-        arrival: toAirport.options[toAirport.selectedIndex].text,
-        departureTime: "18:00",
-        arrivalTime: "20:30",
-        price: 279,
-      },
-    ];
-
-    // Render flight listings
-    const flightListingsContent = document.getElementById(
-      "flight-listings-content"
-    );
-    flightListingsContent.innerHTML = mockFlights
-      .map(
-        (flight) => `
+    content.innerHTML = flights.map(flight => `
       <div class="flight-card">
         <div class="flight-info">
           <div class="flight-route">
-            <span>${flight.departure}</span>
+            <span>${flight.from}</span>
             <span>→</span>
-            <span>${flight.arrival}</span>
+            <span>${flight.to}</span>
           </div>
           <div class="flight-details">
             <div class="flight-time">
-              <span>⏰ ${flight.departureTime} - ${flight.arrivalTime}</span>
+              <span>📅 ${formatDate(flight.fromTime)}</span>
+              <span>⏰ ${formatTime(flight.fromTime)} - ${formatTime(flight.toTime)}</span>
             </div>
-            <div class="flight-number">
-              ✈️ Flight ${flight.flightNumber}
-            </div>
+            <div class="flight-number">✈️ Flight ${flight.flightNumber}</div>
           </div>
         </div>
         <div class="flight-price">$${flight.price}</div>
@@ -82,26 +116,49 @@ document.addEventListener("DOMContentLoaded", function () {
           Select Flight
         </button>
       </div>
-    `
-      )
-      .join("");
-  });
+    `).join("");
+  }
 
-  // Validate that from and to airports are different
+  // Helper functions
+  function showLoading() {
+    const content = document.getElementById("flight-listings-content");
+    content.innerHTML = '<div class="loading">Searching for flights...</div>';
+    document.querySelector(".flight-listings").classList.add("show");
+  }
+
+  function showError() {
+    const content = document.getElementById("flight-listings-content");
+    content.innerHTML = '<div class="error">Error searching for flights. Please try again.</div>';
+  }
+
+  function formatTime(dateTimeString) {
+    try {
+      return new Date(dateTimeString).toLocaleTimeString('en-US', { 
+        hour: '2-digit', minute: '2-digit', hour12: false 
+      });
+    } catch (e) {
+      return dateTimeString.split('T')[1] || dateTimeString;
+    }
+  }
+
+  function formatDate(dateTimeString) {
+    try {
+      return new Date(dateTimeString).toLocaleDateString('en-US', { 
+        year: 'numeric', month: 'short', day: 'numeric' 
+      });
+    } catch (e) {
+      return dateTimeString.split('T')[0] || dateTimeString;
+    }
+  }
+
   function validateAirports() {
-    if (
-      fromAirport.value &&
-      toAirport.value &&
-      fromAirport.value === toAirport.value
-    ) {
+    if (fromAirport.value && toAirport.value && fromAirport.value === toAirport.value) {
       alert("Origin and destination airports cannot be the same");
       toAirport.value = "";
     }
   }
 
-  // Validate entire form before submission
   function validateForm() {
-    // Check if airports are selected
     if (!fromAirport.value) {
       alert("Please select a departure airport");
       fromAirport.focus();
@@ -114,7 +171,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return false;
     }
 
-    // Check if date is selected
     const departureDate = document.querySelector('input[type="date"]');
     if (!departureDate.value) {
       alert("Please select a departure date");
@@ -122,7 +178,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return false;
     }
 
-    // Validate date is not in the past
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const selectedDate = new Date(departureDate.value);
@@ -135,14 +190,37 @@ document.addEventListener("DOMContentLoaded", function () {
     return true;
   }
 
-  // Set min date for departure date picker to today
+  // Set min date for departure date picker
   const departureDateInput = document.querySelector('input[type="date"]');
   const today = new Date().toISOString().split("T")[0];
   departureDateInput.setAttribute("min", today);
 });
 
-// Add new function for flight selection
+// Flight selection function
 function selectFlight(flightNumber, price) {
-  alert(`Flight ${flightNumber} selected! Price: $${price}`);
-  // In a real app, this would navigate to the booking page
+  const selectedFlight = {
+    flightNumber: flightNumber,
+    price: price,
+    from: document.getElementById("from-airport").value,
+    to: document.getElementById("to-airport").value,
+    date: document.querySelector('input[type="date"]').value,
+    class: document.getElementById("class-select").value
+  };
+  
+  localStorage.setItem('selectedFlight', JSON.stringify(selectedFlight));
+  
+  const confirmMessage = `
+Flight Selected Successfully!
+
+Flight: ${flightNumber}
+Route: ${selectedFlight.from} → ${selectedFlight.to}
+Date: ${selectedFlight.date}
+Class: ${selectedFlight.class}
+Price: $${price}
+
+Would you like to proceed to booking?`;
+  
+  if (confirm(confirmMessage.trim())) {
+    alert("Redirecting to booking page... (Feature coming soon!)");
+  }
 }

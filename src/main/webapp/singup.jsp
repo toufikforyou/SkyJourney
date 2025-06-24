@@ -16,7 +16,7 @@ pageEncoding="UTF-8" %>
       <div class="container">
         <div class="auth-box">
           <h2>Register User</h2>
-          <form class="auth-form" method="post" action="/login">
+          <form class="auth-form" method="post" action="/register">
             <div class="form-field">
               <label for="name">Your name</label>
               <input
