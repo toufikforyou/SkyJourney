@@ -65,7 +65,6 @@ public class FlightApiRoute extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            // Read JSON from request body
             StringBuilder buffer = new StringBuilder();
             BufferedReader reader = request.getReader();
             String line;
@@ -102,14 +101,12 @@ public class FlightApiRoute extends HttpServlet {
             String bookingDate = jsonRequest.getString("bookingDate");
             String token = jsonRequest.getString("token");
 
-            // Debug logging
             System.out.println("Booking request received:");
             System.out.println("Flight: " + flightNumber);
             System.out.println("Email: " + email);
             System.out.println("Seat Type: " + seatType);
             System.out.println("Price: " + price);
 
-            // Basic validation - just check if required fields are present
             if (token == null || token.isEmpty()) {
                 JSONObject errorResponse = new JSONObject();
                 errorResponse.put("success", false);
@@ -134,23 +131,21 @@ public class FlightApiRoute extends HttpServlet {
                 return;
             }
 
-            // Book the flight - simplified logic
             Ticket ticket = TicketController.bookFlight(flightNumber, email, seatType, price, bookingDate);
             System.out.println("Ticket created: " + (ticket != null));
 
             JSONObject jsonResponse = new JSONObject();
             if (ticket != null) {
-                // Generate booking ID
                 String bookingId = "BK" + System.currentTimeMillis();
-                
-                // Send confirmation email
+
                 boolean emailSent = false;
                 try {
-                    emailSent = sendBookingConfirmationEmail(email, name, flightNumber, bookingDate, seatType, price, bookingId);
+                    emailSent = sendBookingConfirmationEmail(email, name, flightNumber, bookingDate, seatType, price,
+                            bookingId);
                 } catch (Exception e) {
                     System.err.println("Email sending failed: " + e.getMessage());
                 }
-                
+
                 jsonResponse.put("success", true);
                 jsonResponse.put("message", "Flight booked successfully");
                 jsonResponse.put("bookingId", bookingId);
@@ -159,7 +154,7 @@ public class FlightApiRoute extends HttpServlet {
                 jsonResponse.put("seatType", seatType);
                 jsonResponse.put("price", ticket.price);
                 jsonResponse.put("emailSent", emailSent);
-                
+
                 System.out.println("Booking successful for: " + email);
             } else {
                 jsonResponse.put("success", false);
@@ -171,7 +166,7 @@ public class FlightApiRoute extends HttpServlet {
         } catch (Exception e) {
             System.err.println("Booking error: " + e.getMessage());
             e.printStackTrace();
-            
+
             JSONObject errorResponse = new JSONObject();
             errorResponse.put("success", false);
             errorResponse.put("message", "Booking failed: " + e.getMessage());
@@ -179,26 +174,25 @@ public class FlightApiRoute extends HttpServlet {
         }
     }
 
-    private boolean sendBookingConfirmationEmail(String email, String name, String flightNumber, 
-                                               String bookingDate, String seatType, int price, String bookingId) {
+    private boolean sendBookingConfirmationEmail(String email, String name, String flightNumber,
+            String bookingDate, String seatType, int price, String bookingId) {
         try {
             EmailService emailService = new EmailService();
             String subject = "Flight Booking Confirmation - " + bookingId;
             String message = String.format(
-                "Dear %s,\n\n" +
-                "Your flight booking has been confirmed!\n\n" +
-                "Booking Details:\n" +
-                "Booking ID: %s\n" +
-                "Flight Number: %s\n" +
-                "Date: %s\n" +
-                "Class: %s\n" +
-                "Price: $%d\n\n" +
-                "Thank you for choosing SkyJourney!\n\n" +
-                "Best regards,\n" +
-                "SkyJourney Team",
-                name, bookingId, flightNumber, bookingDate, seatType, price
-            );
-            
+                    "Dear %s,\n\n" +
+                            "Your flight booking has been confirmed!\n\n" +
+                            "Booking Details:\n" +
+                            "Booking ID: %s\n" +
+                            "Flight Number: %s\n" +
+                            "Date: %s\n" +
+                            "Class: %s\n" +
+                            "Price: $%d\n\n" +
+                            "Thank you for choosing SkyJourney!\n\n" +
+                            "Best regards,\n" +
+                            "SkyJourney Team",
+                    name, bookingId, flightNumber, bookingDate, seatType, price);
+
             return emailService.sendEmail(email, name, subject, message, Long.parseLong(bookingId.substring(2)));
         } catch (Exception e) {
             System.err.println("Failed to send confirmation email: " + e.getMessage());

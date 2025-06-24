@@ -30,7 +30,7 @@ public class FlightController {
     }
 
     static {
-        // Deshi mal
+        // Bangladeshi flight
         addFlight("BG101", "Dhaka", "Chittagong", "DAC", "CGP", "2025-06-25T08:00", "2025-06-25T09:00", 150);
         addFlight("BG202", "Chittagong", "Sylhet", "CGP", "ZYL", "2025-06-26T09:30", "2025-06-26T10:30", 130);
         addFlight("BG303", "Sylhet", "Cox's Bazar", "ZYL", "CXB", "2025-06-25T14:15", "2025-06-25T15:15", 160);
@@ -47,8 +47,8 @@ public class FlightController {
         addFlight("BG014", "Khulna", "Cox's Bazar", "KHL", "CXB", "2025-06-30T12:00", "2025-06-30T13:45", 170);
         addFlight("BG015", "Rajshahi", "Barisal", "RJH", "BZL", "2025-07-01T15:00", "2025-07-01T16:15", 150);
 
-        // Bedeshi mal flights
-        addFlight("BG701", "Dhaka", "Kolkata", "DAC", "CCU", "2025-07-02T10:00", "2025-07-02T10:45", 180);
+        // International flights
+        addFlight("BG701", "Dhaka", "Kolkata", "DAC", "CCU", "2025-07-02T10:00", "2025-07-02T10:45", 1800);
         addFlight("BG702", "Chittagong", "Kuala Lumpur", "CGP", "KUL", "2025-07-03T14:00", "2025-07-03T19:30", 350);
         addFlight("BG703", "Sylhet", "London", "ZYL", "LHR", "2025-07-04T22:00", "2025-07-05T08:00", 820);
         addFlight("BG704", "Dubai", "Dhaka", "DXB", "DAC", "2025-07-05T01:00", "2025-07-05T07:00", 390);

@@ -20,9 +20,6 @@ public class RegisterRoute extends HttpServlet {
         String emailOrPhone = req.getParameter("email");
         String password = req.getParameter("password");
 
-        System.out.println(name);
-        System.out.println(emailOrPhone);
-        System.out.println(password);
         /**
          * TODO: Implement register functionality
          * Step 1: Create a model class to represent user credentials and validation
