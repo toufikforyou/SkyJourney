@@ -23,18 +23,43 @@ pageEncoding="UTF-8" %>
         <div class="about-content">
           <div class="about-card">
             <h2>Our Story</h2>
+            <br />
             <p>
-              Founded in 2020, SkyJourney has grown to become one of the leading
-              flight booking platforms, serving millions of travelers worldwide.
+              From a Dream to the Skies – The Journey of SkyJourney In 2020,
+              while the world was grounded, we were getting ready to take off.
+              SkyJourney was founded during a time of global uncertainty, with
+              one clear goal: to simplify and improve the way people book
+              airline tickets. Where others saw a challenge, we saw an
+              opportunity — to build a smarter, more customer-focused travel
+              platform from the ground up.
+            </p>
+            <br />
+            <p>
+              Starting with a small, passionate team, we created a system that
+              prioritized flexibility, transparency, and ease of use. We focused
+              on what travelers truly needed: seamless booking experiences,
+              reliable customer service, and fair, flexible options — especially
+              when travel plans suddenly changed.
             </p>
           </div>
 
           <div class="about-card">
             <h2>Our Mission</h2>
+            <br />
             <p>
-              To make air travel accessible, comfortable, and enjoyable for
-              everyone by providing the best flight deals and exceptional
-              service.
+              Over the years, we expanded our services — launching SkySaver for
+              personalized deal alerts, introducing corporate and group
+              bookings, and partnering with major airlines to bring better fares
+              and more options to our users. Today, SkyJourney has helped over 2
+              million travelers reach their destinations. But more than that,
+              we've become part of countless personal stories — reunions, first
+              adventures, business milestones, and dream vacations.
+            </p>
+            <br />
+            <p>
+              At SkyJourney, we believe a ticket is more than just a seat — it’s
+              the start of something meaningful. And we’re here to make sure
+              that every journey begins smoothly, and ends with satisfaction.
             </p>
           </div>
 
