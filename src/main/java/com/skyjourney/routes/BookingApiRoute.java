@@ -32,7 +32,6 @@ public class BookingApiRoute extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            // Read JSON from request body
             StringBuilder buffer = new StringBuilder();
             BufferedReader reader = request.getReader();
             String line;
@@ -49,7 +48,6 @@ public class BookingApiRoute extends HttpServlet {
             String bookingDate = jsonRequest.getString("bookingDate");
             String token = jsonRequest.getString("token");
 
-            // Validate token and user existence
             if (token == null || token.isEmpty()) {
                 JSONObject errorResponse = new JSONObject();
                 errorResponse.put("success", false);
@@ -66,7 +64,6 @@ public class BookingApiRoute extends HttpServlet {
                 return;
             }
 
-            // Book the flight
             Ticket ticket = TicketController.bookFlight(flightNumber, email, seatType, price, bookingDate);
 
             JSONObject jsonResponse = new JSONObject();
@@ -109,7 +106,6 @@ public class BookingApiRoute extends HttpServlet {
 
         try {
             if (email != null && !email.isEmpty()) {
-                // Get user's bookings
                 ArrayList<Ticket> userTickets = TicketController.getUserTickets(email);
 
                 JSONArray bookingsArray = new JSONArray();

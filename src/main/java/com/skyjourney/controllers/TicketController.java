@@ -9,15 +9,14 @@ public class TicketController {
     public static ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 
     public static Ticket bookFlight(String flightNumber, String email, String seatType, int price, String bookingDate) {
-        // Simplified booking - just create and save the ticket
         try {
             String currentTime = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
             Ticket objTicket = new Ticket(flightNumber, email, currentTime, seatType, price);
             tickets.add(objTicket);
-            
+
             System.out.println("Ticket created successfully for: " + email);
             System.out.println("Total tickets: " + tickets.size());
-            
+
             return objTicket;
         } catch (Exception e) {
             System.err.println("Error creating ticket: " + e.getMessage());
