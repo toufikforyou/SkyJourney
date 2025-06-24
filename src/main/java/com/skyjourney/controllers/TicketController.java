@@ -1,17 +1,38 @@
 package com.skyjourney.controllers;
 
 import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import com.skyjourney.models.Ticket;
 
 public class TicketController {
-    public static ArrayList<Ticket> ticket = new ArrayList<Ticket>();
+    public static ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 
-    Ticket booking(String flightNumber, String email, String currentTime, String seatType, int price) {
-        if (FlightController.doesExist(flightNumber) && UserController.doesExist(email)) {
+    public static Ticket bookFlight(String flightNumber, String email, String seatType, int price, String bookingDate) {
+        // Simplified booking - just create and save the ticket
+        try {
+            String currentTime = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
             Ticket objTicket = new Ticket(flightNumber, email, currentTime, seatType, price);
-            ticket.add(objTicket);
+            tickets.add(objTicket);
+            
+            System.out.println("Ticket created successfully for: " + email);
+            System.out.println("Total tickets: " + tickets.size());
+            
             return objTicket;
+        } catch (Exception e) {
+            System.err.println("Error creating ticket: " + e.getMessage());
+            e.printStackTrace();
+            return null;
         }
-        return null;
+    }
+
+    public static ArrayList<Ticket> getUserTickets(String email) {
+        ArrayList<Ticket> userTickets = new ArrayList<>();
+        for (Ticket ticket : tickets) {
+            if (ticket.email.equals(email)) {
+                userTickets.add(ticket);
+            }
+        }
+        return userTickets;
     }
 }

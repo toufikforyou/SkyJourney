@@ -211,6 +211,20 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function selectFlight(flightNumber, price) {
+  // Check if user is logged in
+  const token = localStorage.getItem("token");
+  const userEmail = localStorage.getItem("email");
+  const userName = localStorage.getItem("name");
+  
+  if (!token || !userEmail) {
+    // User not logged in, redirect to login page
+    const confirmLogin = confirm("You need to login to book a flight. Would you like to login now?");
+    if (confirmLogin) {
+      window.location.href = "/signin.jsp";
+    }
+    return;
+  }
+
   const selectedFlight = {
     flightNumber: flightNumber,
     price: price,
@@ -225,6 +239,8 @@ function selectFlight(flightNumber, price) {
   const confirmMessage = `
 Flight Selected Successfully!
 
+Passenger: ${userName}
+Email: ${userEmail}
 Flight: ${flightNumber}
 Route: ${selectedFlight.from} → ${selectedFlight.to}
 Date: ${selectedFlight.date}
@@ -234,6 +250,86 @@ Price: $${price}
 Would you like to proceed to booking?`;
 
   if (confirm(confirmMessage.trim())) {
-    alert("Redirecting to booking page... (Feature coming soon!)");
+    bookFlight(selectedFlight, userEmail, userName);
   }
+}
+
+// Function to book the selected flight
+function bookFlight(flightDetails, userEmail, userName) {
+  const token = localStorage.getItem("token");
+  
+  // Show booking in progress
+  const loadingDiv = document.createElement("div");
+  loadingDiv.className = "alert info";
+  loadingDiv.innerText = "Processing your booking...";
+  document.body.appendChild(loadingDiv);
+  
+  const bookingData = {
+    action: "book",
+    flightNumber: flightDetails.flightNumber,
+    email: userEmail,
+    name: userName,
+    seatType: flightDetails.class,
+    price: flightDetails.price,
+    bookingDate: flightDetails.date,
+    from: flightDetails.from,
+    to: flightDetails.to,
+    token: token
+  };
+
+  fetch('/api/flights', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(bookingData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    loadingDiv.remove();
+    
+    if (data.success) {
+      const successDiv = document.createElement("div");
+      successDiv.className = "alert success";
+      successDiv.innerHTML = `
+        <strong>Booking Successful!</strong><br>
+        Booking ID: ${data.bookingId}<br>
+        Flight: ${data.flightNumber}<br>
+        A confirmation email has been sent to ${userEmail}
+      `;
+      document.body.appendChild(successDiv);
+      
+      // Clear selected flight from localStorage
+      localStorage.removeItem("selectedFlight");
+      
+      // Remove success message and redirect after 8 seconds
+      setTimeout(() => {
+        successDiv.remove();
+        window.location.href = './tickets.jsp';
+      }, 8000);
+      
+    } else {
+      const errorDiv = document.createElement("div");
+      errorDiv.className = "alert error";
+      errorDiv.innerText = `Booking Failed: ${data.message}`;
+      document.body.appendChild(errorDiv);
+      
+      setTimeout(() => {
+        errorDiv.remove();
+      }, 5000);
+    }
+  })
+  .catch(error => {
+    loadingDiv.remove();
+    console.error('Booking error:', error);
+    
+    const errorDiv = document.createElement("div");
+    errorDiv.className = "alert error";
+    errorDiv.innerText = 'Booking failed. Please try again.';
+    document.body.appendChild(errorDiv);
+    
+    setTimeout(() => {
+      errorDiv.remove();
+    }, 5000);
+  });
 }
