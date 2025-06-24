@@ -1,6 +1,7 @@
 package com.skyjourney.routes;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.skyjourney.controllers.UserController;
+import com.skyjourney.models.User;
 
 @WebServlet("/login")
 public class LogInRoute extends HttpServlet {
@@ -18,8 +20,6 @@ public class LogInRoute extends HttpServlet {
         String emailOrPhone = req.getParameter("email");
         String password = req.getParameter("password");
 
-        // System.out.println(emailOrPhone);
-        // System.out.println(password);
         /**
          * TODO: Implement login functionality
          * Step 1: Create a model class to represent user credentials and validation
@@ -33,15 +33,18 @@ public class LogInRoute extends HttpServlet {
          * Step 5: Must be implement this part @Author Nasfim
          */
 
-        UserController user = new UserController();
-        
-        if(user.login(emailOrPhone, password)){
-            resp.sendRedirect("signin.jsp?success=1&name=MH TOUFIK&email=email@example.com&token=asdfhasjdfhsagd");
-        }
-        else{
-            resp.sendRedirect("signin.jsp?error=1");
-        }
+        UserController userController = new UserController();
+        User user = userController.login(emailOrPhone, password);
 
+        if (user != null) {
+            String token = userController.generateToken();
+            String encodedName = URLEncoder.encode(user.name, "UTF-8");
+            String encodedEmail = URLEncoder.encode(user.email, "UTF-8");
+
+            resp.sendRedirect(
+                    "index.jsp?success=1&name=" + encodedName + "&email=" + encodedEmail + "&token=" + token);
+        } else {
+            resp.sendRedirect("signin.jsp?error=1&message=" + URLEncoder.encode("Invalid email or password", "UTF-8"));
+        }
     }
-
 }
