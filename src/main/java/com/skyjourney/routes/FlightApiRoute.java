@@ -52,9 +52,8 @@ public class FlightApiRoute extends HttpServlet {
     private void handleAirportsRequest(PrintWriter out) {
         Set<String> addedCodes = new HashSet<>();
         JSONArray airports = new JSONArray();
-        
+
         for (Flight flight : FlightController.flights) {
-            // Add fromCode airport if not already added
             if (!addedCodes.contains(flight.fromCode)) {
                 JSONObject airport = new JSONObject();
                 airport.put("code", flight.fromCode);
@@ -62,8 +61,7 @@ public class FlightApiRoute extends HttpServlet {
                 airports.put(airport);
                 addedCodes.add(flight.fromCode);
             }
-            
-            // Add toCode airport if not already added
+
             if (!addedCodes.contains(flight.toCode)) {
                 JSONObject airport = new JSONObject();
                 airport.put("code", flight.toCode);
@@ -85,17 +83,15 @@ public class FlightApiRoute extends HttpServlet {
 
         for (Flight flight : FlightController.flights) {
             boolean matches = true;
-            
-            // Check from airport
+
             if (from != null && !from.isEmpty() && !flight.fromCode.equals(from)) {
                 matches = false;
             }
-            
-            // Check to airport
+
             if (to != null && !to.isEmpty() && !flight.toCode.equals(to)) {
                 matches = false;
             }
-            
+
             if (matches) {
                 matchingFlights.add(flight);
             }
@@ -109,22 +105,18 @@ public class FlightApiRoute extends HttpServlet {
             flightObj.put("to", flight.to);
             flightObj.put("fromCode", flight.fromCode);
             flightObj.put("toCode", flight.toCode);
-            
-            // If user selected a date, use that date with the original flight times
+
             if (date != null && !date.isEmpty()) {
-                // Extract time from original flight time (e.g., "2025-06-25T08:00" -> "T08:00")
                 String fromTime = flight.fromTime.substring(flight.fromTime.indexOf('T'));
                 String toTime = flight.toTime.substring(flight.toTime.indexOf('T'));
-                
-                // Combine user's selected date with flight times
+
                 flightObj.put("fromTime", date + fromTime);
                 flightObj.put("toTime", date + toTime);
             } else {
-                // Use original flight times if no date selected
                 flightObj.put("fromTime", flight.fromTime);
                 flightObj.put("toTime", flight.toTime);
             }
-            
+
             flightObj.put("price", flight.price);
             flights.put(flightObj);
         }

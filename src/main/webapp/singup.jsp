@@ -87,7 +87,7 @@ pageEncoding="UTF-8" %>
         if (localStorage.getItem("token")) {
           localStorage.clear();
         }
-        
+
         const message = params.get("message") || "Registration error";
         const div = document.createElement("div");
         div.className = "alert error";
