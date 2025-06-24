@@ -26,7 +26,7 @@ public class UserController {
         return true;
     }
 
-    static boolean doesExist(String email) {
+    public static boolean doesExist(String email) {
         for (User user : users) {
             if (user.email.equals(email)) {
                 return true;

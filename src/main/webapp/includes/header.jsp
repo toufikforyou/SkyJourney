@@ -28,7 +28,7 @@
       const html =
         '<div class="dropdown"><a href="#" class="dropbtn">' +
         name +
-        '</a><div class="dropdown-content"><a href="#" id="logout">Logout</a></div></div>';
+        '</a><div class="dropdown-content"><a href="/tickets.jsp">My Tickets</a><a href="#" id="logout">Logout</a></div></div>';
 
       if (signinMenu) {
         signinMenu.innerHTML = html;

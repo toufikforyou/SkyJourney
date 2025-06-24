@@ -12,9 +12,9 @@ public class FlightController {
         return flights;
     }
 
-    static boolean doesExist(String flightNumber) {
+    public static boolean doesExist(String flightNumber) {
         for (Flight flight : flights) {
-            if (flight.flightNumber == flightNumber)
+            if (flight.flightNumber.equals(flightNumber))
                 return true;
         }
         return false;
