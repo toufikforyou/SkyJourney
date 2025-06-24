@@ -64,17 +64,28 @@ pageEncoding="UTF-8" %>
           window.location.pathname
         );
 
-        window.location.href = "/";
-      } else if (params.get("error") === 1) {
+        // Show success message
+        const div = document.createElement("div");
+        div.className = "alert success";
+        div.innerText = "Login successful! Redirecting...";
+        document.body.appendChild(div);
+
+        setTimeout(() => {
+          div.remove();
+          window.location.href = "/";
+        }, 2000);
+      } else if (params.get("error") === "1") {
         if (localStorage.getItem("token")) {
           localStorage.clear();
         }
+        
+        const message = params.get("message") || "Login error";
         const div = document.createElement("div");
         div.className = "alert error";
-        div.innerText = "-_- Login error";
+        div.innerText = message;
         document.body.appendChild(div);
 
-        setTimeout(() => div.remove(), 4000);
+        setTimeout(() => div.remove(), 5000);
         window.history.replaceState(
           {},
           document.title,
