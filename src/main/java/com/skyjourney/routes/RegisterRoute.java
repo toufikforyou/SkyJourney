@@ -37,7 +37,7 @@ public class RegisterRoute extends HttpServlet {
          */
 
             UserController user = new UserController();
-            user.resgister(new User(name, emailOrPhone, password));
+            user.RegisterUser(new User(name, emailOrPhone, password));
             resp.sendRedirect("/?success=1&name=" + name + "&email=" + emailOrPhone);
         }
 

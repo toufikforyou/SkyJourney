@@ -6,7 +6,7 @@ import com.skyjourney.models.User;
 
 public class UserController{
 
-    public static ArrayList<User> users = new ArrayList();
+    public static ArrayList<User> users = new ArrayList<User>();
     public boolean login(String email, String password)
     {
         for(int i = 0; i<users.size(); i++)
@@ -17,7 +17,7 @@ public class UserController{
         }
         return false;
     }
-    public void resgister(User user)
+    public void RegisterUser(User user)
     {
         users.add(user);
     }

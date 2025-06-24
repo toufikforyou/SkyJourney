@@ -27,28 +27,12 @@
                 <label>From</label>
                 <select id="from-airport">
                   <option value="">Select Airport</option>
-                  <option value="JFK">New York (JFK)</option>
-                  <option value="LAX">Los Angeles (LAX)</option>
-                  <option value="LHR">London (LHR)</option>
-                  <option value="CDG">Paris (CDG)</option>
-                  <option value="DXB">Dubai (DXB)</option>
-                  <option value="HND">Tokyo (HND)</option>
-                  <option value="SIN">Singapore (SIN)</option>
-                  <option value="SYD">Sydney (SYD)</option>
                 </select>
               </div>
               <div class="search-field">
                 <label>To</label>
                 <select id="to-airport">
                   <option value="">Select Airport</option>
-                  <option value="JFK">New York (JFK)</option>
-                  <option value="LAX">Los Angeles (LAX)</option>
-                  <option value="LHR">London (LHR)</option>
-                  <option value="CDG">Paris (CDG)</option>
-                  <option value="DXB">Dubai (DXB)</option>
-                  <option value="HND">Tokyo (HND)</option>
-                  <option value="SIN">Singapore (SIN)</option>
-                  <option value="SYD">Sydney (SYD)</option>
                 </select>
               </div>
               <div class="search-field">

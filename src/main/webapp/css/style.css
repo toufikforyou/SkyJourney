@@ -325,9 +325,15 @@ nav ul li a:hover {
 
 .flight-time {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 15px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.flight-time span:first-child {
+  color: var(--text-primary);
+  font-weight: 500;
 }
 
 .flight-number {
@@ -358,6 +364,57 @@ nav ul li a:hover {
 .select-flight-btn:hover {
   background-color: var(--primary-hover);
   transform: translateY(-2px);
+}
+
+/* Loading, error, and no-flights states */
+.loading, .error, .no-flights {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+  font-size: 18px;
+}
+
+.loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 8px;
+}
+
+.error {
+  color: #dc2626;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+}
+
+.no-flights {
+  background-color: #f9fafb;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Enhanced flight-time display */
+.flight-time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.flight-time span:first-child {
+  color: var(--text-primary);
+  font-weight: 500;
 }
 
 footer {
