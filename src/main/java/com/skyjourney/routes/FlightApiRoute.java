@@ -131,13 +131,13 @@ public class FlightApiRoute extends HttpServlet {
                 return;
             }
 
-            Ticket ticket = TicketController.bookFlight(flightNumber, email, seatType, price, bookingDate);
+            String bookingId = "BK" + TicketController.generateBookingId();
+
+            Ticket ticket = TicketController.bookFlight(bookingId, flightNumber, email, seatType, price, bookingDate);
             System.out.println("Ticket created: " + (ticket != null));
 
             JSONObject jsonResponse = new JSONObject();
             if (ticket != null) {
-                String bookingId = "BK" + System.currentTimeMillis();
-
                 boolean emailSent = false;
                 try {
                     emailSent = sendBookingConfirmationEmail(email, name, flightNumber, bookingDate, seatType, price,
@@ -180,20 +180,30 @@ public class FlightApiRoute extends HttpServlet {
             EmailService emailService = new EmailService();
             String subject = "Flight Booking Confirmation - " + bookingId;
             String message = String.format(
-                    "Dear %s,\n\n" +
-                            "Your flight booking has been confirmed!\n\n" +
-                            "Booking Details:\n" +
-                            "Booking ID: %s\n" +
-                            "Flight Number: %s\n" +
-                            "Date: %s\n" +
-                            "Class: %s\n" +
-                            "Price: $%d\n\n" +
-                            "Thank you for choosing SkyJourney!\n\n" +
-                            "Best regards,\n" +
-                            "SkyJourney Team",
+                    "<html><body>" +
+                            "<div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>"
+                            +
+                            "<h2 style='color: #2c5aa0; text-align: center;'>Flight Booking Confirmation</h2>" +
+                            "<p>Dear <strong>%s</strong>,</p>" +
+                            "<p>Your flight booking has been confirmed!</p>" +
+                            "<div style='background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;'>"
+                            +
+                            "<h3 style='color: #2c5aa0; margin-top: 0;'>Booking Details:</h3>" +
+                            "<table style='width: 100%%; border-collapse: collapse;'>" +
+                            "<tr><td style='padding: 8px 0; font-weight: bold;'>Booking ID:</td><td>%s</td></tr>" +
+                            "<tr><td style='padding: 8px 0; font-weight: bold;'>Flight Number:</td><td>%s</td></tr>" +
+                            "<tr><td style='padding: 8px 0; font-weight: bold;'>Date:</td><td>%s</td></tr>" +
+                            "<tr><td style='padding: 8px 0; font-weight: bold;'>Class:</td><td>%s</td></tr>" +
+                            "<tr><td style='padding: 8px 0; font-weight: bold;'>Price:</td><td>$%d</td></tr>" +
+                            "</table>" +
+                            "</div>" +
+                            "<p>Thank you for choosing SkyJourney!</p>" +
+                            "<p style='margin-top: 30px;'>Best regards,<br><strong>SkyJourney Team</strong></p>" +
+                            "</div>" +
+                            "</body></html>",
                     name, bookingId, flightNumber, bookingDate, seatType, price);
 
-            return emailService.sendEmail(email, name, subject, message, Long.parseLong(bookingId.substring(2)));
+            return emailService.sendEmail(email, name, subject, message, bookingId);
         } catch (Exception e) {
             System.err.println("Failed to send confirmation email: " + e.getMessage());
             return false;

@@ -7,6 +7,6 @@ public class ContactController extends EmailService {
         String smgString = "<p>Subject: " + subject + "<br><br/>Case smg: " + smg
                 + "<br><br>We will as soon as posible to reply your email.<br><br><br>Best Regards,<br>Support team, Sky Journey<br></p>";
 
-        return this.sendEmail(to, name, subject, smgString, System.currentTimeMillis());
+        return this.sendEmail(to, name, subject, smgString, "#CASE ID: " + String.valueOf(System.currentTimeMillis()));
     }
 }

@@ -20,7 +20,7 @@ public class EmailService {
     private final String senderPassword = dotenv.get("EMAIL_PASS");
 
     public boolean sendEmail(String to, String name, String subject, String msg,
-            Long caseId) {
+            String caseId) {
 
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");
@@ -48,8 +48,7 @@ public class EmailService {
             message.setReplyTo(
                     new InternetAddress[] { new InternetAddress("team@toufikforyou.dev", "Sky Journey Team") });
 
-            String emailSubject = caseId > 0 ? "(Case #" + caseId + ") " + subject : subject;
-            message.setSubject(emailSubject);
+            message.setSubject(subject);
             message.setContent(msg, "text/html; charset=utf-8");
             message.setContent(msg, "text/html; charset=utf-8");
 
