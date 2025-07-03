@@ -15,7 +15,7 @@ import javax.mail.internet.MimeMessage;
 import io.github.cdimascio.dotenv.Dotenv;
 
 public class EmailService {
-    private final Dotenv dotenv = Dotenv.load();
+    private final Dotenv dotenv = Dotenv.configure().ignoreIfMissing().systemProperties().load();
     private final String senderEmail = dotenv.get("EMAIL_USER");
     private final String senderPassword = dotenv.get("EMAIL_PASS");
 
