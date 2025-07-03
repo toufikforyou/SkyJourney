@@ -1,8 +1,8 @@
 package com.skyjourney.routes;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.BufferedReader;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.skyjourney.controllers.TicketController;
 import com.skyjourney.controllers.UserController;
@@ -64,7 +64,9 @@ public class BookingApiRoute extends HttpServlet {
                 return;
             }
 
-            Ticket ticket = TicketController.bookFlight(flightNumber, email, seatType, price, bookingDate);
+            String bookingId = "BK" + TicketController.generateBookingId();
+
+            Ticket ticket = TicketController.bookFlight(bookingId, flightNumber, email, seatType, price, bookingDate);
 
             JSONObject jsonResponse = new JSONObject();
             if (ticket != null) {
@@ -111,6 +113,7 @@ public class BookingApiRoute extends HttpServlet {
                 JSONArray bookingsArray = new JSONArray();
                 for (Ticket ticket : userTickets) {
                     JSONObject ticketObj = new JSONObject();
+                    ticketObj.put("bookingId", ticket.bookingId);
                     ticketObj.put("flightNumber", ticket.flightNumber);
                     ticketObj.put("email", ticket.email);
                     ticketObj.put("currentTime", ticket.currentTime);
