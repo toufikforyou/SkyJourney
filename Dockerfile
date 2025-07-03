@@ -1,19 +1,13 @@
-# --- Stage 1: Build WAR ---
-FROM maven:3.9.6-eclipse-temurin-17 AS builder
-
+# Stage 1: Build
+FROM maven:3.8-jdk-8 AS builder
 WORKDIR /app
 COPY pom.xml .
+RUN mvn dependency:go-offline
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# --- Stage 2: Run WAR on Jetty ---
-FROM jetty:11.0.15-jdk17
-
-# Use default Jetty base directory
-WORKDIR /var/lib/jetty
-
-# Copy WAR file to webapps directory
-COPY --from=builder /app/target/skyjourney.war /var/lib/jetty/webapps/root.war
-
-# Expose Jetty port
+# Stage 2: Run
+FROM tomcat:9.0-jre8-slim
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
+COPY --from=builder /app/target/skyjourney.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8080
