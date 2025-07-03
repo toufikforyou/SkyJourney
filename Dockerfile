@@ -1,11 +1,19 @@
-# Use official Jetty 11 with Java 17
-FROM jetty:11.0-jdk17
+# --- Stage 1: Build WAR ---
+FROM maven:3.9.6-eclipse-temurin-17 AS builder
 
-# Set working directory to Jetty webapps folder
-WORKDIR /var/lib/jetty/webapps
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copy WAR file as root.war so Jetty deploys it as root context
-COPY target/skyjourney.war ./root.war
+# --- Stage 2: Run WAR on Jetty ---
+FROM jetty:11.0.15-jdk17
 
-# Expose Jetty port (optional)
+# Use default Jetty base directory
+WORKDIR /var/lib/jetty
+
+# Copy WAR file to webapps directory
+COPY --from=builder /app/target/skyjourney.war /var/lib/jetty/webapps/root.war
+
+# Expose Jetty port
 EXPOSE 8080
