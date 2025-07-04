@@ -306,7 +306,7 @@ function bookFlight(flightDetails, userEmail, userName) {
       setTimeout(() => {
         successDiv.remove();
         window.location.href = './tickets.jsp';
-      }, 8000);
+      }, 3500);
       
     } else {
       const errorDiv = document.createElement("div");

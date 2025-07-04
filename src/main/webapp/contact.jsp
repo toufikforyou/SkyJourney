@@ -8,6 +8,7 @@ pageEncoding="UTF-8" %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SkyJourney - Contact Us</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
   </head>
 
   <body>
@@ -65,9 +66,9 @@ pageEncoding="UTF-8" %>
             <div class="info-card">
               <h3>Contact Information</h3>
               <p>📍 412 Uganda, Dhaka, Bangladesh.</p>
-              <p>📞 +880 123 456 7890</p>
-              <p>✉️ support@skyjourney.com</p>
-              <p>🌐 www.skyjourney.com</p>
+              <p>📞 +880 9638960006</p>
+              <p>✉️ support@sky.toufikhasan.com</p>
+              <p>🌐 sky.toufikhasan.com</p>
               <p>📅 Open: Always Open</p>
             </div>
           </div>
