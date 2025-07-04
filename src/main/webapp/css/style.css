@@ -801,31 +801,6 @@ footer {
   color: #7f8c8d;
 }
 
-/* Responsive Design for Tickets */
-@media (max-width: 768px) {
-  .tickets-header h2 {
-    font-size: 2rem;
-  }
-  
-  .ticket-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-  }
-  
-  .ticket-info {
-    grid-template-columns: 1fr;
-  }
-  
-  .ticket-actions {
-    flex-direction: column;
-  }
-  
-  .ticket-actions button {
-    width: 100%;
-  }
-}
-
 /* Payment button and status styles */
 .pay-now-btn {
   background: #e74c3c !important;
