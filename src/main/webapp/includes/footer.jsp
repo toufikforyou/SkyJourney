@@ -5,39 +5,83 @@
         <h3>Company</h3>
         <ul>
           <li><a href="./about.jsp">About Us</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Press</a></li>
-          <li><a href="#">Blog</a></li>
+          <li>
+            <a href="https://www.toufikforyou.dev" target="_blank">Careers</a>
+          </li>
+          <li>
+            <a href="https://www.toufikforyou.dev" target="_blank">Press</a>
+          </li>
+          <li>
+            <a href="https://www.toufikforyou.dev" target="_blank">Blog</a>
+          </li>
         </ul>
       </div>
 
       <div class="footer-column">
         <h3>Help</h3>
         <ul>
-          <li><a href="#">FAQs</a></li>
+          <li>
+            <a href="https://www.toufikforyou.dev" target="_blank">FAQs</a>
+          </li>
           <li><a href="/contact.jsp">Contact Us</a></li>
-          <li><a href="#">Booking Guide</a></li>
-          <li><a href="#">Travel Insurance</a></li>
+          <li>
+            <a href="https://www.toufikforyou.dev" target="_blank"
+              >Booking Guide</a
+            >
+          </li>
+          <li>
+            <a href="https://www.toufikforyou.dev" target="_blank"
+              >Travel Insurance</a
+            >
+          </li>
         </ul>
       </div>
 
       <div class="footer-column">
         <h3>Legal</h3>
         <ul>
-          <li><a href="#">Terms & Conditions</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Cookie Policy</a></li>
-          <li><a href="#">Flight Cancellation</a></li>
+          <li>
+            <a href="https://www.toufikforyou.dev" target="_blank"
+              >Terms & Conditions</a
+            >
+          </li>
+          <li>
+            <a href="https://www.toufikforyou.dev" target="_blank"
+              >Privacy Policy</a
+            >
+          </li>
+          <li>
+            <a href="https://www.toufikforyou.dev" target="_blank"
+              >Cookie Policy</a
+            >
+          </li>
+          <li>
+            <a href="https://www.toufikforyou.dev" target="_blank"
+              >Flight Cancellation</a
+            >
+          </li>
         </ul>
       </div>
 
       <div class="footer-column">
         <h3>Stay Connected</h3>
         <ul>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">LinkedIn</a></li>
+          <li>
+            <a href="https://fb.com/toufikforyou" target="_blank">Facebook</a>
+          </li>
+          <li>
+            <a href="https://x.com/toufikforyou" target="_blank">Twitter</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/toufikforyou/" target="_blank"
+              >Instagram</a
+            >
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/toufikforyou" target="_blank"
+              >LinkedIn</a
+            >
+          </li>
         </ul>
       </div>
     </div>
