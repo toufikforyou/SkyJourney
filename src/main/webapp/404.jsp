@@ -8,7 +8,6 @@ pageEncoding="UTF-8" %>
     <title>SkyJourney - Book Flights at Best Prices</title>
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/responsive.css" />
-
     <style>
       .error-section {
         min-height: 80vh;
