@@ -76,7 +76,7 @@ pageEncoding="UTF-8" %>
             Sorry, the page you are looking for does not exist or has been
             moved.
           </p>
-          <a href="index.jsp" class="btn btn-primary">Go to Home</a>
+          <a href="./" class="btn btn-primary">Go to Home</a>
         </div>
       </div>
     </section>
