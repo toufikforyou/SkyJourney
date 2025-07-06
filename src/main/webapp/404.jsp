@@ -6,8 +6,15 @@ pageEncoding="UTF-8" %>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SkyJourney - Book Flights at Best Prices</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/responsive.css" />
+    <link
+      rel="stylesheet"
+      href="<%= request.getContextPath() %>/css/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="<%= request.getContextPath() %>/css/responsive.css"
+    />
+
     <style>
       .error-section {
         min-height: 80vh;
@@ -76,13 +83,13 @@ pageEncoding="UTF-8" %>
             Sorry, the page you are looking for does not exist or has been
             moved.
           </p>
-          <a href="./" class="btn btn-primary">Go to Home</a>
+          <a href="<%= request.getContextPath() %>/" class="btn btn-primary"
+            >Go to Home</a
+          >
         </div>
       </div>
     </section>
 
     <%@ include file="./includes/footer.jsp" %>
-
-    <script src="js/app.js"></script>
   </body>
 </html>
