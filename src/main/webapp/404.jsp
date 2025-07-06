@@ -79,7 +79,11 @@ pageEncoding="UTF-8" %>
         <div class="error-content">
           <h1 class="error-title">404</h1>
           <h2 class="error-subtitle">Page Not Found</h2>
+<<<<<<< HEAD
           <p class="error-message9">
+=======
+          <p class="error-message3">
+>>>>>>> feature/404
             Sorry, the page you are looking for does not exist or has been
             moved.
           </p>
