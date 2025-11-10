@@ -25,8 +25,13 @@ body {
   color: var(--text-primary);
 }
 
-/* Headings use Poppins font */
-h1, h2, h3, h4, h5, h6 {
+/* Headings and buttons use Poppins font */
+h1, h2, h3, h4, h5, h6,
+button,
+.logo,
+.price,
+.flight-price,
+.ticket-price {
   font-family: "Poppins", "Segoe UI", sans-serif;
 }
 
@@ -55,7 +60,6 @@ header {
   font-size: 24px;
   font-weight: 700;
   color: var(--primary);
-  font-family: "Poppins", sans-serif;
   letter-spacing: -0.5px;
 }
 
@@ -202,7 +206,6 @@ nav ul li a:hover {
   padding: 15px 30px;
   font-size: 16px;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
   display: block;
@@ -276,7 +279,6 @@ nav ul li a:hover {
   color: var(--primary);
   font-size: 20px;
   font-weight: 700;
-  font-family: "Poppins", sans-serif;
 }
 
 .flight-listings {
@@ -359,7 +361,6 @@ nav ul li a:hover {
 .flight-price {
   font-size: 28px;
   font-weight: 700;
-  font-family: "Poppins", sans-serif;
   color: var(--primary);
   margin: 0 30px;
   min-width: 120px;
@@ -374,7 +375,6 @@ nav ul li a:hover {
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
   letter-spacing: 0.3px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -693,7 +693,6 @@ footer {
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
   letter-spacing: 0.3px;
   cursor: pointer;
   width: 100%;
@@ -772,7 +771,6 @@ footer {
 .ticket-price {
   font-size: 1.8rem;
   font-weight: 700;
-  font-family: "Poppins", sans-serif;
 }
 
 .ticket-details {
@@ -842,7 +840,6 @@ footer {
   background: #e74c3c !important;
   color: white !important;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
   padding: 10px 20px;
   border-radius: 8px;
   border: none;
@@ -865,7 +862,6 @@ footer {
   background: #27ae60 !important;
   color: white !important;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
   padding: 10px 20px;
   border-radius: 8px;
   border: none;
@@ -902,7 +898,6 @@ footer {
   border-radius: 25px;
   font-size: 0.85rem;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
   white-space: nowrap;
 }
 
@@ -913,7 +908,6 @@ footer {
   border-radius: 25px;
   font-size: 0.85rem;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
   white-space: nowrap;
 }
 
@@ -949,7 +943,6 @@ footer {
   background: #e74c3c !important;
   color: white !important;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
   padding: 10px 20px;
   border-radius: 8px;
   border: none;
@@ -967,7 +960,6 @@ footer {
   background: #95a5a6 !important;
   color: white !important;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
   padding: 10px 20px;
   border-radius: 8px;
   border: none;
