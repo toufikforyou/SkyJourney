@@ -7,6 +7,12 @@ pageEncoding="UTF-8" %>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SkyJourney - Contact Us</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/responsive.css" />
   </head>
@@ -65,11 +71,11 @@ pageEncoding="UTF-8" %>
           <div class="contact-info">
             <div class="info-card">
               <h3>Contact Information</h3>
-              <p>📍 412 Uganda, Dhaka, Bangladesh.</p>
-              <p>📞 +880 9638960006</p>
-              <p>✉️ support@sky.toufikhasan.com</p>
-              <p>🌐 sky.toufikhasan.com</p>
-              <p>📅 Open: Always Open</p>
+              <p><i class="fas fa-map-marker-alt"></i> 412 Uganda, Dhaka, Bangladesh.</p>
+              <p><i class="fas fa-phone"></i> +880 9638960006</p>
+              <p><i class="fas fa-envelope"></i> support@sky.toufikhasan.com</p>
+              <p><i class="fas fa-globe"></i> sky.toufikhasan.com</p>
+              <p><i class="far fa-clock"></i> Open: Always Open</p>
             </div>
           </div>
         </div>
