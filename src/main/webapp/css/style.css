@@ -17,12 +17,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  font-family: "Inter", sans-serif;
+}
+
+/* Headings use Poppins font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  font-weight: 600;
 }
 
 header {
@@ -48,8 +55,10 @@ header {
 
 .logo {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 700;
   color: var(--primary);
+  font-family: "Poppins", sans-serif;
+  letter-spacing: -0.5px;
 }
 
 .logo span {
@@ -120,11 +129,16 @@ nav ul li a:hover {
 .hero h1 {
   font-size: 48px;
   margin-bottom: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  letter-spacing: -1px;
 }
 
 .hero p {
   font-size: 18px;
   margin-bottom: 40px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
 }
 
 .search-box {
@@ -190,11 +204,13 @@ nav ul li a:hover {
   border-radius: 5px;
   padding: 15px 30px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
   display: block;
   width: 100%;
+  letter-spacing: 0.5px;
 }
 
 .search-btn:hover {
@@ -213,6 +229,9 @@ nav ul li a:hover {
 .section-title h2 {
   font-size: 32px;
   color: var(--text-primary);
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .section-title p {
@@ -260,7 +279,8 @@ nav ul li a:hover {
 .price {
   color: var(--primary);
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
 }
 
 .flight-listings {
