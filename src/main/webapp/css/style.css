@@ -362,7 +362,8 @@ nav ul li a:hover {
 
 .flight-price {
   font-size: 28px;
-  font-weight: bold;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
   color: var(--primary);
   margin: 0 30px;
   min-width: 120px;
@@ -377,6 +378,8 @@ nav ul li a:hover {
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.3px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -618,13 +621,27 @@ footer {
   padding-top: 10px;
 }
 
+.contact-info .info-card > p i {
+  margin-right: 10px;
+  color: var(--primary);
+  width: 20px;
+  text-align: center;
+}
+
+.footer-column ul li a i {
+  margin-right: 8px;
+  width: 20px;
+  text-align: center;
+}
+
 .alert {
   position: fixed;
   top: 80px;
   right: 20px;
   padding: 14px 22px;
   border-radius: 6px;
-  font-weight: bold;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
   z-index: 9999;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   opacity: 0.95;
@@ -680,6 +697,8 @@ footer {
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.3px;
   cursor: pointer;
   width: 100%;
   transition: all 0.3s ease;
@@ -756,7 +775,8 @@ footer {
 
 .ticket-price {
   font-size: 1.8rem;
-  font-weight: bold;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
 }
 
 .ticket-details {
@@ -825,7 +845,8 @@ footer {
 .pay-now-btn {
   background: #e74c3c !important;
   color: white !important;
-  font-weight: bold;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
   padding: 10px 20px;
   border-radius: 8px;
   border: none;
@@ -847,7 +868,8 @@ footer {
 .paid-btn {
   background: #27ae60 !important;
   color: white !important;
-  font-weight: bold;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
   padding: 10px 20px;
   border-radius: 8px;
   border: none;
@@ -867,7 +889,8 @@ footer {
 .booking-info h3 {
   margin: 0 0 5px 0;
   font-size: 1.3rem;
-  font-weight: bold;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
 }
 
 .flight-number {
@@ -883,7 +906,8 @@ footer {
   padding: 8px 16px;
   border-radius: 25px;
   font-size: 0.85rem;
-  font-weight: bold;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
   white-space: nowrap;
 }
 
@@ -893,7 +917,8 @@ footer {
   padding: 8px 16px;
   border-radius: 25px;
   font-size: 0.85rem;
-  font-weight: bold;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
   white-space: nowrap;
 }
 
@@ -928,7 +953,8 @@ footer {
 .cancel-btn {
   background: #e74c3c !important;
   color: white !important;
-  font-weight: bold;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
   padding: 10px 20px;
   border-radius: 8px;
   border: none;
@@ -945,7 +971,8 @@ footer {
 .secondary-button {
   background: #95a5a6 !important;
   color: white !important;
-  font-weight: bold;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
   padding: 10px 20px;
   border-radius: 8px;
   border: none;

@@ -71,11 +71,11 @@ pageEncoding="UTF-8" %>
           <div class="contact-info">
             <div class="info-card">
               <h3>Contact Information</h3>
-              <p>📍 412 Uganda, Dhaka, Bangladesh.</p>
-              <p>📞 +880 9638960006</p>
-              <p>✉️ support@sky.toufikhasan.com</p>
-              <p>🌐 sky.toufikhasan.com</p>
-              <p>📅 Open: Always Open</p>
+              <p><i class="fas fa-map-marker-alt"></i> 412 Uganda, Dhaka, Bangladesh.</p>
+              <p><i class="fas fa-phone"></i> +880 9638960006</p>
+              <p><i class="fas fa-envelope"></i> support@sky.toufikhasan.com</p>
+              <p><i class="fas fa-globe"></i> sky.toufikhasan.com</p>
+              <p><i class="far fa-clock"></i> Open: Always Open</p>
             </div>
           </div>
         </div>

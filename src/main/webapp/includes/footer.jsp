@@ -67,20 +67,16 @@
         <h3>Stay Connected</h3>
         <ul>
           <li>
-            <a href="https://fb.com/toufikforyou" target="_blank">Facebook</a>
+            <a href="https://fb.com/toufikforyou" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
           </li>
           <li>
-            <a href="https://x.com/toufikforyou" target="_blank">Twitter</a>
+            <a href="https://x.com/toufikforyou" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
           </li>
           <li>
-            <a href="https://www.instagram.com/toufikforyou/" target="_blank"
-              >Instagram</a
-            >
+            <a href="https://www.instagram.com/toufikforyou/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/toufikforyou" target="_blank"
-              >LinkedIn</a
-            >
+            <a href="https://www.linkedin.com/in/toufikforyou" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
           </li>
         </ul>
       </div>
